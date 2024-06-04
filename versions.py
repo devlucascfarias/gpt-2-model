@@ -1,9 +1,9 @@
 import pkg_resources
 
 libraries = [
-    "Flask",
-    "Transformers",
-    "Torch"
+    "flask",
+    "transformers",
+    "torch"
 ]
 
 for library in libraries:

@@ -10,17 +10,24 @@ app = Flask(__name__)
 @app.route('/', methods=['GET', 'POST'])
 def index():
     output_text = ""
+    input_text = "" 
     logs = []
     if request.method == 'POST':
         input_text = request.form['input_text']
         input_ids = tokenizer.encode(input_text, return_tensors='pt')
 
-        # Add input_text and input_ids to logs
+        # Get temperature and max_length from the form
+        temperature = float(request.form.get('temperature', 0.7))  # Default to 0.7 if not provided
+        max_length = int(request.form.get('max_length', 200))  # Default to 200 if not provided
+
+        # Add input_text, input_ids, temperature and max_length to logs
         logs.append(f'Input Text: {input_text}')
         logs.append(f'Input IDs: {input_ids.tolist()}')
+        logs.append(f'Temperature: {temperature}')
+        logs.append(f'Max Length: {max_length}')
 
         # Generate text
-        output = model.generate(input_ids, max_length=200, temperature=0.7, do_sample=True)
+        output = model.generate(input_ids, max_length=max_length, temperature=temperature, do_sample=True)
 
         # Add raw output to logs
         logs.append(f'Raw Output: {output.tolist()}')
@@ -31,7 +38,7 @@ def index():
         # Add output_text to logs
         logs.append(f'Output Text: {output_text}')
 
-    return render_template('index.html', output_text=output_text, logs=logs)
+    return render_template('index.html', input_text=input_text, output_text=output_text, logs=logs)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0')

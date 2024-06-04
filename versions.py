@@ -3,6 +3,7 @@ import pkg_resources
 libraries = [
     "Flask",
     "Transformers",
+    "Torch"
 ]
 
 for library in libraries:

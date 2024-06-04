@@ -4,7 +4,7 @@
     <title>GPT-2 Model</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="static/style.css">
-    <link rel="icon" href="">
+    <link rel="icon" href="/static/logo.png">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5+5hb7x+cm7D4z2+t3x4v8r+6PC4kP/4fLs/PLdi" crossorigin="anonymous"></script>
 
 </head>
@@ -12,8 +12,7 @@
 
     <div id="wrapper">
 
-    <!-- Sidebar -->
-    <div id="sidebar-wrapper">
+        <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
             <li class="sidebar-brand">
                 <a href="">
@@ -26,17 +25,15 @@
 
         </ul>
     </div>
-    <!-- /#sidebar-wrapper -->
 
-    <!-- Page Content -->
     <div id="page-content-wrapper">
 
     <main role="main">
-        <div class="card-group">
             <div class="card text-center">          
                 <div class="text-right" style="margin: 10px;">
-                    <span class="mb-2 mr-2 badge badge-secondary">GPT-2 Model</span>
-                    <img class="card-img-top mx-auto d-block" src="https://friconix.com/png/fi-ctsuxx-robot.png">
+                    <a href="https://huggingface.co/openai-community/gpt2" target="_blank" class="badge badge-secondary">GPT-2 Model</a>
+                    <a href="https://github.com/devlucascfarias" target="_blank" class="badge badge-secondary">GitHub</a>
+                    <img class="card-img-top mx-auto d-block" src="/static/logo.png">
                 </div>
                 <div class="card-body">
                     <p class="card-text text-left">
@@ -62,7 +59,7 @@
                             <div class="col">
                                 <div class="form-group">
                                     <label for="max_length">Max length: <span id="max_length-value">200</span></label>
-                                    <input type="range" class="form-control-range" id="max_length" name="max_length" min="200" max="1000" step="50" value="300" oninput="document.getElementById('max_length-value').textContent = this.value">
+                                    <input type="range" class="form-control-range" id="max_length" name="max_length" min="50" max="1000" step="50" value="300" oninput="document.getElementById('max_length-value').textContent = this.value">
                                 </div>
                             </div>
                         </div>
@@ -73,10 +70,8 @@
                         <button type="submit" class="btn btn-outline-primary" style="margin-left: 30px; margin-right: 30px; margin-bottom: 8px;">Submit</button>
                     </form>
                     <script>
-                        // When the page loads, set the value of the textarea to the stored value
                         document.getElementById('input_text').value = localStorage.getItem('input_text');
                 
-                        // When the form is submitted, store the value of the textarea
                         document.getElementById('generate-form').addEventListener('submit', function() {
                             localStorage.setItem('input_text', document.getElementById('input_text').value);
                         });
@@ -96,7 +91,6 @@
 
             </div>
             
-        </div>
     </div>
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
